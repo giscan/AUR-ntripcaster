@@ -1,0 +1,18 @@
+# Ntrip Caster - systemd startup/shutdown service
+#
+# This software is licensed under the GPL v2 or later.
+
+[Unit]
+Description=Ntrip caster system startup/shutdown
+After=multi-user.target NetworkManager.service
+Before=shutdown.target
+
+[Service]
+Type=simple
+#RemainAfterExit=no
+ExecStart=/usr/bin/ntripcaster
+
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
